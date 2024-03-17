@@ -15,6 +15,8 @@ public class Login extends JFrame{
         getContentPane().setBackground(Color.WHITE);
         //backgorund color white kora hoilo//
         setLayout(null);//customize layout use korar jonne
+
+
         JLabel lblusername = new JLabel("User Name");
         lblusername.setBounds(300,20,100,20); //location ,size
         add(lblusername);
@@ -42,16 +44,33 @@ public class Login extends JFrame{
         logginin.add("Customer");
         logginin.setBounds(400,100,150,20);
         add(logginin);
-        JButton login = new JButton("Login");
+
+        //Button field
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/icon/login.png"));
+        Image i2 = i1.getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT);
+        JButton login = new JButton("Login",new ImageIcon(i2));
         login.setBounds(330,160,100,20);
         add(login);
 
-        JButton cancel = new JButton("Cancel");
+        ImageIcon i3 = new ImageIcon(ClassLoader.getSystemResource("icon/icon/cancel.jpg"));
+        Image i4= i3.getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT);
+        JButton cancel = new JButton("Cancel",new ImageIcon(i4));
         cancel.setBounds(450,160,100,20);//330+100 = 430+20 =450 gap between signup and cancel = 20;
         add(cancel);
-        JButton signup = new JButton("Signup");
+
+        ImageIcon i5 = new ImageIcon(ClassLoader.getSystemResource("icon/icon/signup.png"));
+        Image i6 = i5.getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT);
+        JButton signup = new JButton("Signup",new ImageIcon(i6));
         signup.setBounds(380,200,100,20);
         add(signup);
+
+        
+        ImageIcon i7 = new ImageIcon(ClassLoader.getSystemResource("icon/icon/second.jpg"));
+        Image i8 = i7.getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT);
+        ImageIcon i9 = new ImageIcon(i8);
+        JLabel img= new JLabel(i9);
+        img.setBounds(0,0,250,250);
+        add(img);
 
         //SIZE AND LOCATION OF THE WINDOW//
         setSize(640,300);
