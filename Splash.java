@@ -44,6 +44,7 @@ public class Splash extends JFrame implements Runnable{
         try {
             Thread.sleep(7000);// 7 second por window vanish hoe jabe
             setVisible(false);
+            new Login();
             
         } catch (Exception e) {
             System.out.println("Error in the run functipn \n");

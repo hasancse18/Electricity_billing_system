@@ -4,7 +4,9 @@ import javax.swing.border.*;
 
 
 import java.awt.*;
-public class Signup extends JFrame{
+import java.awt.event.*;
+public class Signup extends JFrame implements ActionListener{
+    JButton create,back;
     Signup()
     {
         //create window
@@ -80,25 +82,51 @@ public class Signup extends JFrame{
         panel.add(pass);
         
         //Create Button
-        JButton create= new JButton("Create");
+        create= new JButton("Create");
         create.setBackground(Color.BLACK);
         create.setForeground(Color.WHITE);
         create.setBounds(130,260,120,25);
+        create.addActionListener(this);
         panel.add(create);
         
+        
         //Back Button
-        JButton back = new JButton("Back");
+        back = new JButton("Back");
         back.setBounds(290,260,120,25);
         back.setForeground(Color.WHITE);
         back.setBackground(Color.BLACK);
+        back.addActionListener(this);
         panel.add(back);
         
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/icon/signupImage.png"));
+        //ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/icon/elect.jpg"));
+        Image i2 = i1.getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT);
+        ImageIcon i3 = new ImageIcon(i2);
+        JLabel image = new JLabel(i3);
+        image.setBounds(410,30,250,250);
+        panel.add(image);
         
         setVisible(true);
 
 
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==back)
+        {
+            new Login();
+            setVisible(false);
+        }
+        else if(e.getSource()==create)
+        {
+
+        }
+        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+    }
+
     public static void main(String[] args) {
         new Signup();
     }
+    
 }

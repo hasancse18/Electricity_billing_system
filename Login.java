@@ -1,10 +1,12 @@
 package ElectricityBillingSystem;
 
 import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.*;
 
-public class Login extends JFrame{
+public class Login extends JFrame implements ActionListener{
+    JButton login,cancel,signup;
     Login()
     {
         super("LogIn Page");//window heading
@@ -48,20 +50,23 @@ public class Login extends JFrame{
         //Button field
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/icon/login.png"));
         Image i2 = i1.getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT);
-        JButton login = new JButton("Login",new ImageIcon(i2));
+        login = new JButton("Login",new ImageIcon(i2));
         login.setBounds(330,160,100,20);
+        login.addActionListener(this);
         add(login);
 
         ImageIcon i3 = new ImageIcon(ClassLoader.getSystemResource("icon/icon/cancel.jpg"));
         Image i4= i3.getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT);
-        JButton cancel = new JButton("Cancel",new ImageIcon(i4));
+        cancel = new JButton("Cancel",new ImageIcon(i4));
         cancel.setBounds(450,160,100,20);//330+100 = 430+20 =450 gap between signup and cancel = 20;
+        cancel.addActionListener(this);
         add(cancel);
 
         ImageIcon i5 = new ImageIcon(ClassLoader.getSystemResource("icon/icon/signup.png"));
         Image i6 = i5.getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT);
-        JButton signup = new JButton("Signup",new ImageIcon(i6));
+        signup = new JButton("Signup",new ImageIcon(i6));
         signup.setBounds(380,200,100,20);
+        signup.addActionListener(this);
         add(signup);
 
         
@@ -77,7 +82,28 @@ public class Login extends JFrame{
         setLocation(400,200);
         setVisible(true);
     }
+    //login,cancel,signup
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      if(e.getSource()==cancel)
+      {
+        setVisible(false);
+      }
+      else if (e.getSource()==signup){
+        new Signup();
+        setVisible(false);
+
+      }
+      else if(e.getSource()==login)
+      {
+
+      }
+
+        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+    }
     public static void main(String[] args) {
         new Login();
     }
+
+    
 }
