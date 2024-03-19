@@ -9,6 +9,7 @@ public class Signup extends JFrame implements ActionListener{
     JButton create,back;
     Signup()
     {
+        new Conn();
         //create window
         setBounds(400,200,700,400);//left,top,length,width
         getContentPane().setBackground(Color.white);
