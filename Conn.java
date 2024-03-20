@@ -4,19 +4,16 @@ import java.sql.*;
 
 public class Conn {
 
+   
     Connection c;
     Statement s;
-    Conn()
-    {
+    Conn() {
         try {
-            
-            c= DriverManager.getConnection("jdbc:mysql:///ebs","root","");
+            c = DriverManager.getConnection("jdbc:mysql:///ebs", "root", "");
             s = c.createStatement();
-    } catch (SQLException e) {
-            // TODO Auto-generated catch block
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
 
 }

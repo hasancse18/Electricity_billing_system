@@ -5,11 +5,15 @@ import javax.swing.border.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 public class Signup extends JFrame implements ActionListener{
     JButton create,back;
+    Choice accountType;
+    JTextField meter, username,name,pass;
     Signup()
     {
-        new Conn();
+        //new Conn();
         //create window
         setBounds(400,200,700,400);//left,top,length,width
         getContentPane().setBackground(Color.white);
@@ -34,7 +38,7 @@ public class Signup extends JFrame implements ActionListener{
         heading.setFont(new Font("Tahoma",Font.BOLD,14));
         panel.add(heading);
 
-        Choice accountType = new Choice();
+        accountType = new Choice();
         accountType.add("Customer");
         accountType.add("Admin");
         accountType.setBounds(260,50,150,20);
@@ -46,7 +50,7 @@ public class Signup extends JFrame implements ActionListener{
         lblmeter.setFont(new Font("Tahoma",Font.BOLD,14));
         panel.add(lblmeter);
 
-        JTextField meter = new JTextField();
+        meter = new JTextField();
         meter.setBounds(260,90,150,20);
         panel.add(meter);
 
@@ -56,7 +60,7 @@ public class Signup extends JFrame implements ActionListener{
         lblusername.setFont(new Font("Tahoma",Font.BOLD,14));
         panel.add(lblusername);
 
-        JTextField username = new JTextField();
+        username = new JTextField();
         username.setBounds(260,130,150,20);
         panel.add(username);
 
@@ -66,7 +70,7 @@ public class Signup extends JFrame implements ActionListener{
         lblname.setFont(new Font("Tahoma",Font.BOLD,14));
         panel.add(lblname);
 
-        JTextField name = new JTextField();
+        name = new JTextField();
         name.setBounds(260,170,150,20);
         panel.add(name);
 
@@ -78,7 +82,7 @@ public class Signup extends JFrame implements ActionListener{
         panel.add(lblpass);
         
 
-        JTextField pass = new JTextField();
+        pass = new JTextField();
         pass.setBounds(260,210,150,20);
         panel.add(pass);
         
@@ -121,9 +125,25 @@ public class Signup extends JFrame implements ActionListener{
         }
         else if(e.getSource()==create)
         {
+            
+            String atype = (String) accountType.getSelectedItem();
+            String susername = username.getText();
+            String sname = name.getText();
+            String spassword = pass.getText();
+            String smeter = meter.getText();
+
+            try {
+                Conn c = new Conn();
+                String query = "insert into login values('"+smeter+"', '"+susername+"', '"+sname+"', '"+spassword+"', '"+atype+"')";
+                c.s.executeUpdate(query);        
+                JOptionPane.showMessageDialog(null, "Account Created Successfully");
+                new Login();
+                setVisible(false);
+            } catch (Exception eb) {
+                eb.printStackTrace();
+            }
 
         }
-        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
 
     public static void main(String[] args) {
